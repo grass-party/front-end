@@ -18,7 +18,7 @@ const router = new VueRouter({
         {path: '/signUp', component: SignUp},
         {path: '/generateKey', component: GenerateKey},
         {path: '/create', component: AgendaCreate},
-        {path: '/agenda', component: AgendaList},
+        {path: '/agendas', component: AgendaList},
     ]
 });
 export default router

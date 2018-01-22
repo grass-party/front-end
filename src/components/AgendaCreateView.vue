@@ -11,8 +11,8 @@
     </section>
     <form>
         <div class="notification">
-            Grass party에서는 사상과 표현의 다양성을 존중합니다. 
-                하지만 타인의 권리를 침해하거나 명예를 훼손하는 내용은 제한합니다.  
+            Grass party에서는 사상과 표현의 다양성을 존중합니다.
+                하지만 타인의 권리를 침해하거나 명예를 훼손하는 내용은 제한합니다.
                 <ul>
                     <li>안건은 다른 사용자 x인의 리뷰 및 동의를 얻은 이후 최종적으로 발제됩니다. </li>
                     <li>15일 이내에 동의가 완료되지 못한 안건은 발제되지 않습니다</li>
@@ -61,13 +61,12 @@
             </div>
         </b-field>
          <b-field class="choices" label="투표 항목" type="is-info" >
-            <input  v-for="(choice, i) in choices" :key="i" v-model.trim="choice.content" 
-                    class="input is-info" 
+            <input v-for="(choice, i) in choices" :key="i" v-model.trim="choice.title"
+                    class="input is-info"
                     v-focus
-                    :placeholder="(i + 1) + '번 문항을 입력해주세요'" 
-                    @blur="addChoice(choice.content)" 
+                    :placeholder="(i + 1) + '번 문항을 입력해주세요'"
                     @keyup.tab.stop.prevent
-                    @keyup.enter="addChoice(choice.content)"></input>
+                    @keyup.enter="addChoice(choice.content)">
         </b-field>
          <button type="button" class="button is-info is-medium" @click="createAgenda">
             등록하기
@@ -86,14 +85,19 @@
                 description: '',
                 tag: '',
                 files: [],
-                choices: [{}]
+                choices: [{
+                  title: '',
+                  order: 1
+                }]
             }
         },
         methods: {
             addChoice(content) {
-                console.log(content)
-                if(this.choices.filter((c) => !c.content).length === 0) {
-                    this.choices.push({})
+                if(this.choices.filter((c) => !c.title).length === 0) {
+                    this.choices.push({
+                      title: '',
+                      order:  this.choices.length + 1
+                    });
                     console.log(this.$el)
                     // this.$el.find('.choices input:last-child').focus();
                 }
@@ -103,13 +107,23 @@
                     return;
                 }
                 this.$store.dispatch(ACTION.CREATE_AGENDA, {
-                    title: this.title, 
-                    description: this.description, 
-                    tag: this.tag, 
-                    files: this.files, 
+                    title: this.title,
+                    description: this.description,
+                    tag: this.tag,
+                    files: this.files,
                     choices: this.choices
+                }).then(() => {
+                  this.$toast.open({
+                    message: 'Create Agenda Success',
+                    type: 'is-success'
+                  })
+                  this.$router.push('/agendas')
+                }, (errCode) => {
+                  this.$toast.open({
+                    message: errCode,
+                    type: 'is-danger'
+                  })
                 });
-                this.$router.push('/')
                 console.log(this, this._data)
             },
             _checkValid() {

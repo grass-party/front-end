@@ -5,11 +5,13 @@ import keypairApi from '../api/keypairApi'
 export default {
     async [ACTION.FETCH_AGENDA_LIST] ({dispatch, commit}, payload) {
         let response = await agendaApi.fetchAgendaList();
-        if(response.status === 200) {
-            commit(ACTION.FETCH_AGENDA_LIST, response);
-        } else {
-            commit(ACTION.FETCH_FAILURE, response);
-        }
+        commit(ACTION.FETCH_AGENDA_LIST, response.data);
+        // if(response.status === 200) {
+        //     commit(ACTION.FETCH_AGENDA_LIST, response);
+        // } else {
+        //     commit(ACTION.FETCH_FAILURE, response);
+        // }
+        console.log(response.data)
         return response;
     },
     async [ACTION.FETCH_AGENDA] ({dispatch, commit}, payload) {
@@ -23,9 +25,9 @@ export default {
     },
     async [ACTION.CREATE_AGENDA] ({dispatch}, payload) {
         let response = await agendaApi.createAgenda(payload);
-        if(response.status === 200) {
-            await dispatch(ACTION.FETCH_AGENDA_LIST);
-        }
+        await dispatch(ACTION.FETCH_AGENDA_LIST);
+        console.log(response)
+        return response;
     },
 
     async [ACTION.UPDATE_AGENDA] ({dispatch}, payload) {

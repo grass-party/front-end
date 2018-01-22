@@ -2,12 +2,13 @@ import axios from 'axios'
 const STORAGE_KEY = 'temp-grass-fe'
 
 export function fetchAgendaList () {
-    return Promise.resolve({
-        status: 200,
-        data: {
-            list: [...JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')]
-        }
-    });
+    return axios.get('/api/agendas/')
+    // return Promise.resolve({
+    //     status: 200,
+    //     data: {
+    //         list: [...JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')]
+    //     }
+    // });
 }
 
 export function fetchAgenda(id) {
@@ -18,13 +19,7 @@ export function fetchAgenda(id) {
 }
 
 export function createAgenda(agenda) {
-    let agendaList = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
-    agenda.id = agendaList.length;
-    agendaList.push(agenda)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(agendaList))
-    return Promise.resolve({
-        status: 200
-    });
+    return axios.post('/api/agendas/', agenda)
 }
 
 export function getGunni() {

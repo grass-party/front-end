@@ -1,8 +1,8 @@
 <template>
-<div id="navbarExampleTransparentExample" class="navbar-menu">
-    <div>{{agendaList}}</div>
+<div>
+  <div v-for="agenda in agendaList" :key="agenda.id">{{agenda.title}}</div>
 </div>
-</template>  
+</template>
 <script>
 
 import {mapState} from 'vuex'
@@ -15,4 +15,3 @@ import {ACTION} from '../store/config'
 </script>
 <style>
 </style>
-  
