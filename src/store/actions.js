@@ -1,5 +1,6 @@
 import {ACTION} from './config';
 import agendaApi from '../api/agendaApi'
+import keypairApi from '../api/keypairApi'
 
 export default {
     async [ACTION.FETCH_AGENDA_LIST] ({dispatch, commit}, payload) {
@@ -39,5 +40,8 @@ export default {
         if(response.status === 200) {
             await dispatch(ACTION.FETCH_AGENDA_LIST);
         }
+    },
+    async [ACTION.GENERATE_PUBLICKEY] ({dispatch}, payload) {
+        return await keypairApi.generatePublickey(payload);
     }
 }

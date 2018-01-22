@@ -6,5 +6,6 @@ export const ACTION =  {
     DELETE_AGENDA: 'deleteAgenda',
     FETCH_VOTE_LIST: 'fetchVoteList',
     SIGN_UP: 'signUp',
-    SIGN_IN: 'signIn'
+    SIGN_IN: 'signIn',
+    GENERATE_PUBLICKEY: 'generatePublickey'
 }
