@@ -24,7 +24,35 @@
 </main>
 </template>
 <script>
+    import {mapActions} from 'vuex'
+    import {ACTION} from '../store/config'
+    import openpgp from 'openpgp'
 
+    export default {
+        data() {
+            return {
+                publickey: '',
+                privatekey: '',
+            }
+        },
+        methods: {
+            publishKey() {
+                let options = {
+                    userIds: [{ name:'Jon Smith', email:'jon@example.com' }],
+                    numBits: 4096,
+
+                };
+                var $vm = this
+                openpgp.generateKey(options).then((key) => {
+                    $vm.privatekey = key.privateKeyArmored
+                    $vm.publickey = key.publicKeyArmored
+                    console.log($vm.privatekey)
+                    console.log($vm.publickey)
+                    alert('generated')
+                });
+            }
+        }
+    }
 </script>
 <style>
 form {
