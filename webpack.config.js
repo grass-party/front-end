@@ -89,7 +89,17 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    proxy: {
+      '/api': {
+        target: 'https://w0r94urjbj.execute-api.ap-northeast-2.amazonaws.com/dev',
+        secure: false,
+        hot: true,
+        changeOrigin: true,
+        logLevel: 'debug',
+        pathRewrite: {'^/api': '/'}
+      }
+    }
   },
   performance: {
     hints: false

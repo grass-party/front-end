@@ -7,9 +7,10 @@ import Main from '../components/MainView'
 import AgendaList from '../components/AgendaListView'
 import AgendaCreate from '../components/AgendaCreateView'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const router = new VueRouter({
+    mode: 'history',
     base: __dirname,
     routes: [
         {path: '/', component: Main},
@@ -19,6 +20,6 @@ const router = new VueRouter({
         {path: '/create', component: AgendaCreate},
         {path: '/agenda', component: AgendaList},
     ]
-})
+});
 export default router
 
