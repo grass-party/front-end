@@ -19,6 +19,9 @@
             <router-link class="navbar-item" to="/agenda">
                 Agenda
             </router-link>
+            <router-link class="navbar-item" to="/generateKey">
+                Generate Key
+            </router-link>
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link" href="/">
                 Etc
