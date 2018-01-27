@@ -9,7 +9,7 @@
             </h2>
             </div>
             <div class="column">
-                <img src="/src/assets/grass-party.png" width="200">
+                <img src="/assets/grass-party.png" width="200">
             </div>
         </div>
     </section>
