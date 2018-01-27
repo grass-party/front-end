@@ -17,7 +17,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run build
-  deploy:
+  deployment:
     prod:
       commands:
         - aws s3 cp index.html s3://grassparty-frontend/
