@@ -16,7 +16,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run build
       - deploy:
-        commands: |
+        command: |
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
             ./deploy.sh
           fi
