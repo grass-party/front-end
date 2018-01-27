@@ -24,10 +24,8 @@ jobs:
     steps:
       - run:
           name: Deploy to S3 if tests pass and branch is Master
-          command: 
-            - aws s3 cp index.html s3://grassparty-frontend/
-            - aws s3 sync dist s3://grassparty-frontend/dist --delete
-            - aws s3 sync assets s3://grassparty-frontend/assets --delete
+          command: ./deploy.sh
+            
 workflows:
   version: 2
   build-deploy:
