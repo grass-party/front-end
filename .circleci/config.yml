@@ -18,6 +18,8 @@ jobs:
             - run: npm run build
             - deploy:
                 command: |
-                  sudo apt install -y python3-pip
-                  sudo pip3 install awscli
-                  ./deploy.sh
+                  if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                    sudo apt install -y python3-pip
+                    sudo pip3 install awscli
+                    ./deploy.sh
+                  fi
