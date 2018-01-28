@@ -1,63 +1,44 @@
 <template>
-  <header class="navbar header is-transparent">
-    <div class="container">
-      <div class="navbar-brand">
-        <router-link to="/" class="navbar-item">
-          <strong>Grass party</strong>
-        </router-link>
-        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-          <span></span>
-          <span></span>
-          <span></span>
+  <header class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <router-link class="navbar-item site-title" to="/">
+            Grass Party
+          </router-link>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </div>
-      </div>
-      <div id="navbarExampleTransparentExample" class="navbar-menu">
-        <div class="navbar-start">
-          <router-link class="navbar-item" to="/">
-            Home
-          </router-link>
-          <router-link class="navbar-item" to="/agenda">
-            Agenda
-          </router-link>
-          <router-link class="navbar-item" to="/generateKey">
-            Generate Key
-          </router-link>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link" href="/">
-              Etc
-            </a>
-            <div class="navbar-dropdown is-boxed">
-              <router-link class="button navbar-item" to="/create">
-                <span>New</span>
-              </router-link>
-            </div>
-          </div>
-        </div>
-
-        <div class="navbar-end">
-          <div class="navbar-item">
-            {{user.name}}
-            <div class="field is-grouped">
+        <div id="navbarMenuHeroB" class="navbar-menu">
+          <div class="navbar-end">
+            <router-link class="navbar-item" to="/agenda">
+              안건목록
+            </router-link>
+            <router-link class="navbar-item" to="/create">
+              안건등록
+            </router-link>
+            <router-link class="navbar-item" to="/generateKey">
+              Generate Key
+            </router-link>
+            <span class="navbar-item">
               <p class="control" v-if="!isSigned">
                 <router-link class="button" to="/signin">
-                  <span>Signin</span>
+                  <span>Sign in</span>
                 </router-link>
               </p>
               <p class="control" v-if="isSigned">
                 <button class="button" @click="signOut">
-                  <span>Signout</span>
+                  <span>Sign out</span>
                 </button>
               </p>
-              <p class="control">
-                <router-link class="button is-success" to="/create">
-                  <span>New</span>
-                </router-link>
-              </p>
-            </div>
+            </span>
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 </template>
 <script>
@@ -66,9 +47,7 @@
   export default {
     computed: {
       ...mapState(['user']),
-      ...mapGetters([
-        'isSigned'
-      ])
+      ...mapGetters(['isSigned'])
     },
     methods: {
       ...mapActions(['signOut'])
@@ -76,6 +55,22 @@
   }
 
 </script>
-<style>
+<style scoped>
+  header {
+    position: sticky;
+    background: #000;
+    opacity: 0.7;
+    top: 0;
+    z-index: 1;
+  }
+
+  .site-title {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  .navbar {
+    background: #000;
+  }
 
 </style>
