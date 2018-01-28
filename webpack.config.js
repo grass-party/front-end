@@ -90,6 +90,9 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     overlay: true,
+    https: true,
+    port: 8087,
+    host: "local.grassparty.com",
     proxy: {
       '/api': {
         target: 'https://w0r94urjbj.execute-api.ap-northeast-2.amazonaws.com/dev',

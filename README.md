@@ -10,3 +10,8 @@ Grass party web frontend
 $ npm install
 $ npm run dev
 ```
+
+/etc/hosts 에 아래와 같이 setting
+```sh
+127.0.0.1 local.grassparty.com
+```

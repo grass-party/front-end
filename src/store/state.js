@@ -1,6 +1,7 @@
 import {ACTION} from './config';
 
 export default {
-    agendaList: [],
-    currentAgenda: {}
+  user: {},
+  agendaList: [],
+  currentAgenda: {}
 }
