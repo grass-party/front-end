@@ -14,7 +14,7 @@
         </div>
         <div id="navbarMenuHeroB" class="navbar-menu">
           <div class="navbar-end">
-            <router-link class="navbar-item" to="/agenda">
+            <router-link class="navbar-item" to="/agendas">
               안건목록
             </router-link>
             <router-link class="navbar-item" to="/create">
