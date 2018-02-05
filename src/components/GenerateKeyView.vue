@@ -31,6 +31,7 @@
   import {mapActions} from 'vuex'
   import {ACTION} from '../store/config'
   import openpgp from 'openpgp'
+  import FileSaver from 'file-saver'
 
   export default {
     data() {
@@ -55,6 +56,8 @@
           console.log($vm.publickey)
           $vm.isLoading = false
           alert('키 생성이 완료되었습니다')
+          var file = new File([this.privatekey], "private_key.txt", {type: "text/plain;charset=utf-8"});
+          FileSaver.saveAs(file);
         });
       },
       sendPublickey() {
@@ -62,13 +65,9 @@
           alert("키 생성을 먼저 해야 합니다")
           return
         }
-
         this.$store.dispatch(ACTION.GENERATE_PUBLICKEY, {
           pubkey: this.publickey
         })
-      },
-      savePrivatekey() {
-
       },
       loadPrivatekey() {
 
