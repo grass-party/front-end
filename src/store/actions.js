@@ -12,7 +12,7 @@ export default {
     // } else {
     //     commit(ACTION.FETCH_FAILURE, response);
     // }
-    console.log(response.data)
+    // console.log(response.data)
     return response;
   },
   async [ACTION.FETCH_AGENDA]({dispatch, commit}, payload) {
