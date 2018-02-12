@@ -13,10 +13,11 @@ export function fetchAgendaList() {
 }
 
 export function fetchAgenda(id) {
-  return Promise.resolve({
-    status: 200,
-    data: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')[id]
-  });
+  return axios.get(`/api/agendas/${id}/`)
+  // return Promise.resolve({
+  //   status: 200,
+  //   data: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')[id]
+  // });
 }
 
 export function createAgenda(agenda) {

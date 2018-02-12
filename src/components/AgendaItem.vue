@@ -1,5 +1,5 @@
 <template>
-    <router-link to="/agenda" tag="div">
+    <router-link :to="'/agendas/' + agenda.id" tag="div">
         {{ agenda.title }}
     </router-link>
 </template>

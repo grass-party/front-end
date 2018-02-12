@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>google id로 로그인</div>
+    <img
     <button class="el-col-2" @click="signedIn">로그인</button>
   </div>
 </template>

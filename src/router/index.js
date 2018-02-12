@@ -5,6 +5,7 @@ import SignUp from '../components/SignUpView'
 import GenerateKey from '../components/GenerateKeyView'
 import Main from '../components/MainView'
 import AgendaList from '../components/AgendaListView'
+import AgendaDetail from '../components/AgendaDetail'
 import AgendaCreate from '../components/AgendaCreateView'
 
 Vue.use(VueRouter);
@@ -19,6 +20,7 @@ const router = new VueRouter({
     {path: '/generateKey', component: GenerateKey},
     {path: '/create', component: AgendaCreate},
     {path: '/agendas', component: AgendaList},
+    {path: '/agendas/:id', component: AgendaDetail},
   ]
 });
 export default router
