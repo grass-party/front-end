@@ -14,7 +14,6 @@
 </script>
 <style scoped>
   .footer {
-    background: linear-gradient(0deg, #555, #111);
     color: #fff;
   }
 

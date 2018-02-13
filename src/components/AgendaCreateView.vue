@@ -63,7 +63,6 @@
       <b-field class="choices" label="투표 항목" type="is-info">
         <input v-for="(choice, i) in choices" :key="i" v-model.trim="choice.title"
                class="input is-info"
-               v-focus
                :placeholder="(i + 1) + '번 문항을 입력해주세요'"
                @keyup.tab.stop.prevent
                @keyup.enter="addChoice(choice.content)">

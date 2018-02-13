@@ -21,7 +21,6 @@
 </script>
 
 <style lang="scss">
-  @import url(http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb);
   @import "~bulma/sass/utilities/_all";
 
   // Set your colors
@@ -49,6 +48,8 @@
   $link-invert: $primary-invert;
   $link-focus-border: $primary;
 
+  $footer-background-color: #111;
+
   // Import Bulma and Buefy styles
   @import "~bulma";
   @import "~buefy/src/scss/buefy";
@@ -57,8 +58,17 @@
     font-family: 'NanumGothic', '나눔고딕', 'NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #111;
-    color: #fff;
+    background: #fff;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  #app main {
+    flex: 1;
   }
 
   .title,

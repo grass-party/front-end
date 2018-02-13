@@ -126,7 +126,8 @@
 </script>
 <style lang="scss" scoped>
   main {
-
+    background: #111;
+    color: #fff;
   }
 
   .main-body {
@@ -135,7 +136,7 @@
       background-repeat: no-repeat;
       background-position: 50% 0;
       background-size: cover;
-      opacity: 0.6;
+      opacity: 0.3;
       width: 100%;
       height: 100%;
       position: absolute;
