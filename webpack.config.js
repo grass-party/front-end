@@ -130,3 +130,22 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
+
+if (process.env.NODE_ENV === 'local') {
+  module.exports.devServer.proxy = {
+    '/api': {
+      target: 'https://local.grassparty.com:8087/dummy',
+      secure: false,
+      hot: true,
+      changeOrigin: true,
+      logLevel: 'debug',
+      pathRewrite(path, option) {
+        option.method = 'GET'
+        if(path.endsWith('/')){
+          path = path.slice(0, -1)
+        }
+        return path + '.json';
+      }
+    }
+  }
+}
