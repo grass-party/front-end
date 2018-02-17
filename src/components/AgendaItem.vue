@@ -1,6 +1,5 @@
 <template>
-    <a class="agenda-item" tag="a">
-      <!--:to="'/agendas/' + agenda.id"-->
+    <router-link tag="a" class="agenda-item" :to="'/agendas/' + agenda.id">
       <div class="agenda-list-left">
         <h1 class="agenda-title">{{ agenda.title }}</h1>
         <div>
@@ -16,7 +15,7 @@
         <div class="vote-num">12</div>
         <div>votes</div>
       </div>
-    </a>
+    </router-link>
 </template>
 <script>
   export default {
