@@ -130,3 +130,16 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
+
+if (process.env.NODE_ENV === 'offline') {
+  module.exports.devServer.proxy = {
+    '/api': {
+      target: 'http://localhost:3004',
+      secure: false,
+      hot: true,
+      changeOrigin: true,
+      logLevel: 'debug',
+      pathRewrite: {'^/api': '/'}
+    }
+  }
+}
