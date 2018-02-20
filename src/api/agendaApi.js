@@ -1,27 +1,15 @@
-import axios from 'axios'
-
-const STORAGE_KEY = 'temp-grass-fe'
+import {axiosInstance} from './base'
 
 export function fetchAgendaList() {
-  return axios.get('/api/agendas/')
-  // return Promise.resolve({
-  //     status: 200,
-  //     data: {
-  //         list: [...JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')]
-  //     }
-  // });
+  return axiosInstance.get('/agendas/')
 }
 
 export function fetchAgenda(id) {
-  return axios.get(`/api/agendas/${id}/`)
-  // return Promise.resolve({
-  //   status: 200,
-  //   data: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')[id]
-  // });
+  return axiosInstance.get(`/agendas/${id}/`)
 }
 
 export function createAgenda(agenda) {
-  return axios.post('/api/agendas/', agenda)
+  return axiosInstance.post('/agendas/', agenda)
 }
 
 export default {
