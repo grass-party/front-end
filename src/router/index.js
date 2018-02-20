@@ -12,7 +12,7 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: 'history',
-  base: __dirname,
+  base: process.env.URL_BASE,
   routes: [
     {path: '/', component: Main},
     {path: '/signIn', component: SignIn},

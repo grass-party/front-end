@@ -75,7 +75,8 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash]',
+          useRelativePath: true
         }
       }
     ]
@@ -107,7 +108,26 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"development"',
+        URL_BASE: '"/"'
+      }
+    })
+  ]
+};
+
+if (process.env.NODE_ENV === 'build-development') {
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"development"',
+        URL_BASE: '"/dev/"'
+      }
+    })
+  ])
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -116,7 +136,8 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
+        NODE_ENV: '"production"',
+        URL_BASE: '"/"'
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
