@@ -12,9 +12,14 @@ export function createAgenda(agenda) {
   return axiosInstance.post('/agendas/', agenda)
 }
 
+export function vote({id, choice}) {
+  return axiosInstance.post(`/agendas/${id}/vote`, {choice})
+}
+
 export default {
   uid: 0,
   fetchAgendaList,
   fetchAgenda,
-  createAgenda
+  createAgenda,
+  vote
 }

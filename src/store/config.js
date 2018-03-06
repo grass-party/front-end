@@ -8,7 +8,8 @@ export const ACTION = {
   SIGN_UP: 'signUp',
   SIGN_IN: 'signIn',
   SIGN_OUT: 'signOut',
-  GENERATE_PUBLICKEY: 'generatePublickey'
+  GENERATE_PUBLICKEY: 'generatePublickey',
+  VOTE: 'vote'
 };
 
 export const MUTATION = {

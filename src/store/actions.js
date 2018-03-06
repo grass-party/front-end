@@ -44,6 +44,12 @@ export default {
       await dispatch(ACTION.FETCH_AGENDA_LIST);
     }
   },
+
+  async [ACTION.VOTE]({commit}, payload) {
+    let response = await agendaApi.vote(payload);
+    return response;
+  },
+
   async [ACTION.GENERATE_PUBLICKEY]({dispatch}, payload) {
     return await keypairApi.generatePublickey(payload);
   },

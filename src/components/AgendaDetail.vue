@@ -21,25 +21,24 @@
             </p>
         </div>
       </div>
-      
-      <template v-for="(choice, i) in agenda.choices">
-        <div class="field is-grouped">
-          <h1 class="control is-expanded">
-            {{ choice.title }}
-          </h1>
-          <p class="control">
-            <a class="button is-info" @click="vote">
-              투표하기
-            </a>
-          </p>
-        </div>
-      </template>
+      <ul class="field">
+        <li v-for="(choice, i) in agenda.choices">
+          <b-radio v-model="agenda.choice"
+                      size="is-large"
+                      :native-value="choice.order">
+            <span>{{i}}</span>.&nbsp;
+            <span class="choice-title">{{ choice.title }}</span>
+          </b-radio>
+        </li>
+      </ul>
+      <a class="button is-info" :disabled="!agenda.choice" @click="vote({id: agenda.id, choice: agenda.choice})">
+        투표하기
+      </a>
     </form>
   </main>
 </template>
 <script>
-  import {mapState} from 'vuex'
-  import {mapActions} from 'vuex'
+  import {mapState, mapActions} from 'vuex'
   import {ACTION} from '../store/config'
 
   export default {
@@ -69,9 +68,7 @@
           })
         });
       },
-      vote () {
-
-      }
+      ...mapActions([ACTION.VOTE])
     },
   }
 </script>

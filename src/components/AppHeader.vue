@@ -6,13 +6,8 @@
           <router-link class="navbar-item site-title" to="/">
             Grass Party
           </router-link>
-          <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
         </div>
-        <div id="navbarMenuHeroB" class="navbar-menu">
+        <div id="navbarMenuHeroB" class="navbar-menu is-active">
           <div class="navbar-end">
             <router-link class="navbar-item" to="/agendas">
               안건목록
