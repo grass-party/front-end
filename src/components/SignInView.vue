@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <div>google id로 로그인</div>
-    <img
-    <button class="el-col-2" @click="signedIn">로그인</button>
-  </div>
+  <section>
+    <a @click="signedIn"><img src="/assets/naver_login_btn.png" width="300"/></a>
+  </section>
 </template>
 <script>
   import {mapActions} from 'vuex'
@@ -37,6 +35,13 @@
     }
   }
 </script>
-<style>
+<style scoped>
+  section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
 
 </style>

@@ -10,7 +10,9 @@
           잔디당은 블록체인에 기반한 투명성을 보장하는 투표시스템입니다.
           <br>지금 당신의 의견을 등록해주세요.
         </p>
-        <a class="button is-large is-outlined is-white">가입하기</a>
+        <router-link class="button is-large is-outlined is-white" to="/signup">
+          <span>가입하기</span>
+        </router-link>
       </div>
     </div>
     <div class="main-footer">

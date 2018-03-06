@@ -22,9 +22,9 @@
         </div>
       </div>
       <ul class="field">
-        <li v-for="(choice, i) in agenda.choices">
+        <li class="choice" v-for="(choice, i) in agenda.choices">
           <b-radio v-model="agenda.choice"
-                      size="is-large"
+                      size="is-medium"
                       :native-value="choice.order">
             <span>{{i}}</span>.&nbsp;
             <span class="choice-title">{{ choice.title }}</span>
@@ -68,19 +68,32 @@
           })
         });
       },
-      ...mapActions([ACTION.VOTE])
+      vote (payload) {
+        this.$store.dispatch(ACTION.VOTE, payload).then(() => {
+          this.$route.push('/agendas')
+        }).then(() => {
+          this.$toast.open({
+            message: '투표완료',
+            type: 'is-success'
+          })
+          this.$router.push('/agendas')
+        }, (errCode) => {
+          this.$toast.open({
+            message: errCode,
+            type: 'is-danger'
+          })
+        });
+      }
     },
   }
 </script>
-<style lang="scss" scoped>
+<style scoped>
   form {
     margin: 30px 1.5rem;
   }
 
-  .choices {
-    input {
-      margin: 5px 0;
-    }
+  .choice {
+    margin: 10px 0;
   }
 
   @media screen and (min-width: 1024px) {
@@ -89,5 +102,13 @@
       width: 960px;
       margin: 30px auto;
     }
+  }
+
+  .b-radio {
+    align-items: flex-start;
+  }
+
+  .b-radio.radio >>> .check {
+    flex: none;
   }
 </style>
