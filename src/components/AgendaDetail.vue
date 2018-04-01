@@ -26,7 +26,7 @@
           <b-radio v-model="agenda.choice"
                       size="is-medium"
                       :native-value="choice.order">
-            <span>{{i}}</span>.&nbsp;
+            <span>{{choice.order}}</span>.&nbsp;
             <span class="choice-title">{{ choice.title }}</span>
           </b-radio>
         </li>
@@ -70,12 +70,10 @@
       },
       vote (payload) {
         this.$store.dispatch(ACTION.VOTE, payload).then(() => {
-          this.$route.push('/agendas')
-        }).then(() => {
           this.$toast.open({
             message: '투표완료',
             type: 'is-success'
-          })
+          });
           this.$router.push('/agendas')
         }, (errCode) => {
           this.$toast.open({

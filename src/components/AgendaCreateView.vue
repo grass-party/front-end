@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="create-view">
     <section class="hero is-info">
       <div class="hero-body">
         <div class="container">
@@ -61,6 +61,11 @@
         </div>
       </b-field>
       <b-field class="choices" label="투표 항목" type="is-info">
+        <button type="button" class="button is-small" @click="addChoice">
+          +
+        </button>
+      </b-field>
+      <b-field>
         <input v-for="(choice, i) in choices" :key="i" v-model.trim="choice.title"
                class="input is-info"
                :placeholder="(i + 1) + '번 문항을 입력해주세요'"
@@ -76,8 +81,10 @@
 <script>
   import {mapActions} from 'vuex'
   import {ACTION} from '../store/config'
+  import BField from "../../node_modules/buefy/src/components/field/Field.vue";
 
   export default {
+    components: {BField},
     data() {
       return {
         title: '',
@@ -91,7 +98,7 @@
       }
     },
     methods: {
-      addChoice(content) {
+      addChoice() {
         if (this.choices.filter((c) => !c.title).length === 0) {
           this.choices.push({
             title: '',
@@ -113,7 +120,7 @@
           choices: this.choices
         }).then(() => {
           this.$toast.open({
-            message: 'Create Agenda Success',
+            message: '안건등록완료',
             type: 'is-success'
           })
           this.$router.push('/agendas')
@@ -123,7 +130,6 @@
             type: 'is-danger'
           })
         });
-        console.log(this, this._data)
       },
       _checkValid() {
         return true;
@@ -138,22 +144,29 @@
     }
   }
 </script>
-<style lang="scss" scoped>
-  form {
-    margin: 30px 1.5rem;
-  }
+<style lang="scss" >
 
-  .choices {
-    input {
-      margin: 5px 0;
-    }
-  }
-
-  @media screen and (min-width: 1024px) {
+  .create-view {
     form {
-      max-width: 960px;
-      width: 960px;
-      margin: 30px auto;
+      margin: 30px 1.5rem;
+    }
+
+    .choices {
+      input {
+        margin: 5px 0;
+      }
+
+      label {
+        display: inline-block;
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      form {
+        max-width: 960px;
+        width: 960px;
+        margin: 30px auto;
+      }
     }
   }
 </style>

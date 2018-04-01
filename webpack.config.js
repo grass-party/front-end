@@ -96,7 +96,7 @@ module.exports = {
     host: "local.grassparty.com",
     proxy: {
       '/api': {
-        target: 'https://w0r94urjbj.execute-api.ap-northeast-2.amazonaws.com/dev',
+        target: 'https://kzyv5zrz2c.execute-api.ap-northeast-2.amazonaws.com/dev',
         secure: false,
         hot: true,
         changeOrigin: true,

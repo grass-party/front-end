@@ -13,7 +13,7 @@ export function createAgenda(agenda) {
 }
 
 export function vote({id, choice}) {
-  return axiosInstance.post(`/agendas/${id}/vote`, {choice})
+  return axiosInstance.post(`/agendas/${id}/vote/`, {choice})
 }
 
 export default {
